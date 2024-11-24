@@ -1,6 +1,6 @@
 'use client'
 
-import Word from "@/components/ui/Word";
+import Paragraph from "@/components/ui/Word";
 
 export default function Home() {
 
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main>
       <div style={{ height: "100vh" }}></div>
-      <Word value={paragraph}/>
+      <Paragraph value={paragraph}/>
       <div style={{ height: "100vh" }}></div>
     </main>
   );
