@@ -1,34 +1,16 @@
 'use client'
 
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import Word from "@/components/ui/Word";
 
 export default function Home() {
 
-  const [inputtext, setinputtext] = useState("");
-
-  const handleClick = (param) => {
-    alert(param);
-  }
-
-  const handleChange = (e) => {
-    setinputtext(e.target.value);
-  }
+  const paragraph = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae autem corrupti, fugiat id maxime dolor nostrum quas? Magnam, iusto. Corrupti quidem quae rerum nesciunt magni nam asperiores sequi omnis repellendus"
 
   return (
-    <>
-      <Input type="text" onChange={handleChange} />
-      <Button onClick={() => handleClick("Heyyy")}>Click Me</Button>
-      <p>Value is : {inputtext}</p>
-      <br />
-
-      {inputtext == "NextJS" && <div>
-        <h1>Members Area</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae labore a iste, sapiente esse fugiat quam, veritatis amet cum dignissimos debitis ipsa eligendi provident adipisci quod, placeat assumenda. Error, dolorum.</p>
-      </div>}
-      
-    </>
+    <main>
+      <div style={{ height: "100vh" }}></div>
+      <Word value={paragraph}/>
+      <div style={{ height: "100vh" }}></div>
+    </main>
   );
 }
