@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
 
-  const handleClick = () => {
-    alert("Hey there !");
+  const handleClick = (param) => {
+    alert(param);
   }
 
   return (
     <div>
-      <Button onClick={handleClick}>Click Me</Button>
+      <Button onClick={() => handleClick("Heyyy")}>Click Me</Button>
     </div>
   );
 }
