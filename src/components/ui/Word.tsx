@@ -1,44 +1,44 @@
-import { useScroll, motion, progress, useTransform } from "framer-motion";
-import React, { useEffect, useRef } from "react";
-import styles from '@/app/page.module.css'
+import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
 
+export default function ScrollAnimatedText() {
+  const containerRef = useRef(null);
 
-export default function Paragraph({ value }) {
+  // Track scroll progress relative to the container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"], // Adjust scroll behavior
+  });
 
-    const element = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: element,
-        offset: ['start 0.9', 'start 0.25']
-    })
+  // Text split into words
+  const text = "Building with Bits".split(" ");
 
-    const words = value.split(" ");
+  return (
+    <div className="min-h-[200vh] bg-black flex justify-center items-center">
+      {/* Outer scrollable container */}
+      <div ref={containerRef} className="relative h-screen w-full">
+        {/* Sticky text in the center */}
+        <div className="sticky top-1/2 transform -translate-y-1/2 flex justify-center">
+          <motion.div className="flex space-x-4">
+            {text.map((word, i) => {
+              // Set unique scroll progress ranges for each word
+              const start = i / text.length;
+              const end = start + 1 / text.length;
+              const opacity = useTransform(scrollYProgress, [start, end], [0.1, 1]);
 
-    return (
-
-        <p
-            className={styles.paragraph}
-            ref={element}
-        >
-        {
-          words.map( (word, i) => {
-            const start = i / words.length;
-            const end = start + (1 / words.length)
-            console.log([start, end]);
-            return <Word key={i} range={[start, end]} progress={scrollYProgress}>{word}</Word>
-          })
-        }
-        </p>
-    )
-}
-
-const Word = ({children, range, progress}) => {
-  const opacity = useTransform(progress, range, [0, 1])
-  return(
-    <motion.span 
-    style={{opacity}}
-    className={styles.word}
-    > 
-    {children} 
-    </motion.span>
-  )
+              return (
+                <motion.span
+                  key={i}
+                  style={{ opacity }} // Animate opacity for each word
+                  className="text-white font-bold text-8xl"
+                >
+                  {word}
+                </motion.span>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
 }
