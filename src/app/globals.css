@@ -28,3 +28,9 @@ body {
   }
 }
 
+/* Hides the Static Route badge */
+#__next > div:first-of-type {
+  display: none !important;
+}
+
+
