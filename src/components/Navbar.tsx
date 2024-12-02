@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
@@ -37,13 +38,14 @@ const Navbar = () => {
 
       {/* Action Buttons */}
       <div className="flex items-center space-x-2">
-        {/* "Let's Talk" Button */}
-        <a
-          className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-11 px-4 py-2 bg-transparent rounded-xl border border-white/10"
-          href="/contact"
+        {/* "Let's Talk" Shadcn Button */}
+        <Button
+          variant="outline"
+          className="h-11 px-4 py-2 text-sm font-medium rounded-xl"
+          asChild
         >
-          Let&apos;s talk
-        </a>
+          <a href="/contact">Let&apos;s talk</a>
+        </Button>
 
         {/* Hamburger Menu (Mobile View) */}
         <button
